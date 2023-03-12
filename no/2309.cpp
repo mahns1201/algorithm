@@ -5,12 +5,9 @@
 // 아홉 난쟁이의 키가 주어졌을 때, 백설공주를 도와 일곱 난쟁이를 찾는 프로그램을 작성하시오.
 
 #include <bits/stdc++.h>
-
 using namespace std;
 
 int a[9];
-
-
 int main() {
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
