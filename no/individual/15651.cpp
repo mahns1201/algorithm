@@ -1,4 +1,35 @@
 // https://www.acmicpc.net/problem/15651
+// 2차 풀이
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// int N, M;
+
+// void calc(vector<int> arr) {
+  
+
+//   if (arr.size() == M) {
+//     for (int a: arr) cout << a << " ";
+//     cout << "\n";
+//     return;
+//   }
+
+//   for (int i=1; i<N+1; i++) {
+//     arr.push_back(i);
+//     calc(arr);
+//     arr.pop_back();
+//   }
+// }
+
+// int main() {
+//   ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+//   cin >> N >> M;
+//   calc({});
+
+//   return 0;
+// }
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -40,3 +71,4 @@ void rFn(int target, vector<int> result) {
     // cout << "\n";
   }
 }
+
