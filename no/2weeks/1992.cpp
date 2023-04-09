@@ -9,7 +9,7 @@ string adj[68][68];
 
 string sumString(string lt, string rt, string lb, string rb) {
 	if (lt == rt && rt == lb && lb == rb && rb == "1") return "1";
-  else if (lt == rt && rt == lb && lb == rb && rb == "0") return "0";
+	else if (lt == rt && rt == lb && lb == rb && rb == "0") return "0";
 	else return "(" + lt + rt + lb + rb + ")";
 }
 
@@ -32,7 +32,7 @@ string dfs(int y, int x, int depth) {
 }
 
 int main() {
-    ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+	ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 	cin >> N;
 
 	for (int i=0; i<N; i++) {
