@@ -1,3 +1,5 @@
+// 팰린드롬
+
 #include<bits/stdc++.h>
 using namespace std;
 
