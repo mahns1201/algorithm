@@ -52,3 +52,42 @@ int main() {
 
   return 0;
 }
+
+
+/*
+	날짜: 2023-08-01
+	횟수: 2
+*/
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// int N;
+// string I, pattern, s, e;
+// vector<string> pat, ret;
+
+// int main() {
+//     ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+    
+//     cin >> N >> pattern;
+
+//     int pos = pattern.find('*');
+
+//     s = pattern.substr(0, pos);
+//     e = pattern.substr(pos+1);
+    
+//     for (int i=0; i<N; i++) {
+//         cin >> I;
+
+//         if (s.length() + e.length() > I.length()) cout << "NE\n";
+//         else if (s == I.substr(0, s.length()) && e == I.substr(I.length() - e.length(), I.length())) {
+//             cout << "DA\n";
+//         } 
+//         else cout << "NE\n";
+//     }
+
+//     // for (auto r: ret) {
+//     //     cout << r << "\n";
+//     // }
+
+//     return 0;
+// }
