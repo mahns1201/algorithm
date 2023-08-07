@@ -67,3 +67,49 @@ int main() {
 
 //   return 0;
 // }
+
+/*
+	날짜: 2023-08-07
+	횟수: 2
+  특이사항: 반복문 돌리는 것에 대해 다시 확인...
+*/
+// string I;
+// int arr[200];
+// int main() {
+//     ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+//     cin >> I;
+//     for (char i: I) {
+//         arr[(int) i]++;
+//     }
+
+//     int odd = 0;
+//     string ret = "";
+//     string mid = "";
+
+//     for (int i=199; i>0; i--) {
+//         if (arr[i] & 1) {
+//             mid = (char) i;
+//             odd++;
+//         } 
+//         if (odd > 1) {
+//             cout << "I'm Sorry Hansoo" << "\n";
+//             exit(0);
+//         }
+//     }
+    
+//     for (int i=91; i>=65; i--) {
+//         while(arr[i] >= 2) {
+//             ret = (char) i + ret;
+//             ret += (char) i; 
+//             arr[i] -= 2;
+//         }
+//     }
+
+//     if (mid.size() > 0) {
+//         ret.insert(ret.length()/2, mid);
+//     }
+    
+//     cout << ret << "\n";
+
+//     return 0;
+// }
