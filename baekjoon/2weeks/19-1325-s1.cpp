@@ -1,4 +1,4 @@
-// https://www.acmicpc.net/problem/17298
+// https://www.acmicpc.net/problem/1325
 
 /*
     날짜: 2023-09-05
