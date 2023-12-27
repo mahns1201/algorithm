@@ -1,8 +1,9 @@
-// 누가 선발인지 기억하기 쉽게 하기 위해 
-// 성의 첫 글자가 같은 선수 5명을 선발하려고 한다. 
-// 만약, 성의 첫 글자가 같은 선수가 5명보다 적다면, 
-// 상근이는 내일 있을 친선 경기를 기권하려고 한다.
-// 상근이는 내일 경기를 위해 뽑을 수 있는 성의 첫 글자를 모두 구해보려고 한다.
+// https://www.acmicpc.net/problem/1159
+
+/*
+	날짜: 2023-12-27
+	횟수: 2
+*/
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -40,3 +41,27 @@ int main() {
 
   cout << "\n";
 }
+
+// int n;
+// int arr[30];
+// string ret;
+
+// int main() {
+//     ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+//     cin >> n;
+//     for (int i=0; i<n; i++) {
+//         string s;
+//         cin >> s;
+//         arr[int(s[0])-97]++;
+//     }
+
+//     for (int i=0; i<26; i++) {
+//         if (5 <= arr[i]) {
+//             ret += char(i+97);
+//         }
+//     }
+
+//     ret.size() ? cout << ret : cout << "PREDAJA";
+
+//     return 0;
+// }
