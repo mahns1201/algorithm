@@ -91,3 +91,44 @@ int main() {
 
 //     return 0;
 // }
+
+/*
+	날짜: 2023-12-27
+	횟수: 3
+  특이사항: 예외 생각 조금 더 해보자.
+*/
+// const char delimeter = '*';
+// int n;
+// string pattern, s; 
+// vector<string> ret;
+
+// void printV(vector<string> V) {
+//     for (auto i: V) {
+//         cout << i << "\n";
+//     }
+// }
+
+// int main() {
+//     ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+//     cin >> n >> pattern;
+//     string front = pattern.substr(0, pattern.find(delimeter));
+//     string back = pattern.substr(pattern.find(delimeter)+1, pattern.size());
+//     for (int i=0; i<n; i++) {
+//         cin >> s;
+
+//         if (s.size() < front.size() + back.size()) {
+//             ret.push_back("NE");
+//             continue;
+//         }
+        
+//         string t_front = s.substr(0, front.size());
+//         string t_back = s.substr(s.size()-back.size(), s.size());
+
+//         if (front == t_front && back == t_back) ret.push_back("DA");
+//         else ret.push_back("NE");
+//     }
+
+//     printV(ret);
+
+//     return 0;
+// }
