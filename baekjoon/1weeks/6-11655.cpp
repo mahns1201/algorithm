@@ -1,7 +1,4 @@
-// ROT13은 카이사르 암호의 일종으로 영어 알파벳을 13글자씩 밀어서 만든다.
-// 예를 들어, "Baekjoon Online Judge"를 ROT13으로 암호화하면 "Onrxwbba Bayvar Whqtr"가 된다. 
-// ROT13으로 암호화한 내용을 원래 내용으로 바꾸려면 암호화한 문자열을 다시 ROT13하면 된다. 
-// 앞에서 암호화한 문자열 "Onrxwbba Bayvar Whqtr"에 다시 ROT13을 적용하면 "Baekjoon Online Judge"가 된다.
+// https://www.acmicpc.net/problem/11655
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -59,6 +56,43 @@ int main() {
 //             else cout << char(s+shift) << "";
 //         } else cout << s << "";
 //     }
+
+//     return 0;
+// }
+
+/*
+	날짜: 2023-12-27
+	횟수: 3
+*/
+// string s;
+// int main() {
+//     ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+//     // cout << char(90) << char(122);
+//     // 1. 65 ~ 90 사이
+//     // 2. 97 ~ 122 사이
+//     // 1, 2면 13을 더한다. 각각의 상황에서 90, 122 < 결과면 65, 97을 뺀다
+    
+//     getline(cin, s);
+//     // cin >> s; // 122 -> 135 -> 
+    
+//     for (int i=0; i<s.size(); i++) {
+//         int oi = int(s[i]);
+//         int ri = oi;
+
+//         if (65 <= oi && oi <= 90) {
+//             ri = oi + 13;
+//             if (90 < ri) ri = 65 + (ri - 91);
+//         }
+
+//         else if (97 <= oi && oi <= 122) {
+//             ri = oi + 13;
+//             if (122 < ri) ri = 97 + (ri - 123);
+//         }
+
+//         cout << char(ri) << "";
+//     }
+
+//     cout << "\n";
 
 //     return 0;
 // }
