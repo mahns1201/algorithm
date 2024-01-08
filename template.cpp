@@ -8,7 +8,7 @@ void printV(vector<int> V) {
 }
 
 int main() {
-    ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
     cout << "hello, world!" << "\n";
     return 0;
