@@ -123,3 +123,53 @@ int main() {
 
 //     return 0;
 // }
+
+
+/*
+	날짜: 2024-01-09
+	횟수: 3
+  특이사항: 굿
+*/
+
+const int max_n = 100;
+int dy[4] = {-1, 0, 1, 0};
+int dx[4] = {0, 1, 0, -1};
+int n, m, y, x;
+int mp[max_n][max_n];
+int visited[max_n][max_n];
+
+int main() {
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    cin >> n >> m;
+    for (int i=0; i<n; i++) {
+        string s;
+        cin >> s;
+        for (int j=0; j<m; j++) {
+            mp[i][j] = int(s[j])-48;
+        }
+    }
+
+    queue<pair<int, int>> q;
+    visited[0][0] = 1;
+    q.push({0, 0});
+
+    while(q.size()) {
+        tie(y, x) = q.front(); q.pop();
+        
+        for (int t=0; t<4; t++) {
+            int ny = y + dy[t];
+            int nx = x + dx[t];
+            if (ny < 0 || nx < 0 || n <= ny || m <= nx) continue;
+            if (!mp[ny][nx]) continue;
+            if (visited[ny][nx]) continue;
+
+            q.push({ny, nx});
+            visited[ny][nx] = visited[y][x] + 1;
+        }
+        
+    }
+
+    cout << visited[n-1][m-1] << "\n";
+
+    return 0;
+}
