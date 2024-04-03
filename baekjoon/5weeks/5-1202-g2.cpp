@@ -4,7 +4,7 @@ using namespace std;
 /*
     날짜: 2024-04-03
 	횟수: 1
-    메모: 다시 풀어보기
+    메모: 다시 풀어보기 / 반복문을 초기화 없이 실행할 땐 while을 쓰자.
 */
 
 long long result;
@@ -41,10 +41,9 @@ int main() {
 
     // j.first: 무게
     // j.second: 가격
-    
     int j=0;
     for(int bag: bags) {
-        for(j; j<n; j++) {
+        while(j<n) {
             if(bag>=jewels[j].first) {
                 pq.push(jewels[j].second);
             } else break;
