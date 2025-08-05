@@ -1,10 +1,9 @@
-// 문제가 길어서 링크 참조 https://www.acmicpc.net/problem/2559
+// https://www.acmicpc.net/problem/2559
+// presum, 변수 선언 
 
 #include <bits/stdc++.h>
 using namespace std;
 
-// prefix sum 구현 손에 익히자!
-// 변수 선언 
 
 int N, space;
 int main() {
@@ -63,6 +62,34 @@ int main() {
 
 //     sort(ret.begin(), ret.end(), greater<int>());
 //     cout << ret[0] << "\n";
+
+//     return 0;
+// }
+
+/*
+	날짜: 2025-08-05
+	횟수: 3
+  특이사항: 모든 구간합이 음수일 수 있기 때문에 ret을 0으로 초기화 하면 오답이 된다.
+*/
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// int n, k, t, ret = -987654321;
+// int arr[100004];
+// int main() {
+//     ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+//     cin >> n >> k;
+
+//     for (int i=1; i<n+1; i++) {
+//         cin >> t;
+//         arr[i] = t + arr[i-1];
+//     }
+
+//     for (int i=k; i<n+1; i++) {
+//         ret = max(ret, arr[i] - arr[i-k]);
+//     }
+
+//     cout << ret << "\n";
 
 //     return 0;
 // }
