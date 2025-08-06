@@ -3,12 +3,40 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*
+	날짜: 2025-08-06
+	횟수: 3
+*/
+int n, ret;
+string s;
+stack<char> stk;
 int main() {
-  ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-  
-  // 다시 풀어봐라.
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    cin >> n;
+    for (int i=0; i<n; i++) {
+        while(!stk.empty()) stk.pop();
 
-  return 0;
+        cin >> s;
+        s.c_str();
+
+        for (char it: s) {
+            if (stk.empty()) {
+                stk.push(it);
+            } else if (stk.top() == it) {
+                stk.pop();
+            } else {
+                stk.push(it);
+            }
+        }
+
+        if (stk.size() == 0) {
+            ret++;
+        }
+    }
+
+    cout << ret << "\n";
+
+    return 0;
 }
 
 // #include <bits/stdc++.h>
