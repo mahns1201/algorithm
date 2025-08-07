@@ -1,56 +1,115 @@
 // https://www.acmicpc.net/problem/2178
 
+/*
+	날짜: 2025-08-07
+	횟수: 4
+*/
 #include <bits/stdc++.h>
 using namespace std;
 
-string input;
-int n, m;
+const int _max = 104;
 int dy[4] = {-1, 0, 1, 0};
 int dx[4] = {0, 1, 0, -1};
-int adj[104][104];
-int visited[104][104];
-int ret = 0;
+int mp[_max][_max];
+int visited[_max][_max];
+int n, m;
 
 void bfs(int y, int x) {
-  visited[0][0] = 1;
-  queue<pair<int, int>> q;
-  q.push({y, x});
-  while(q.size()){
-    pair<int, int> here = q.front(); q.pop();
-    for(int i=0; i<4; i++) {
-      int ny = here.first + dy[i];
-      int nx = here.second + dx[i];
-      
-      if(ny < 0 || nx < 0 || n <= ny || m <= nx || adj[ny][nx] == 0) continue; 
-      if (visited[ny][nx]) continue;
-      q.push({ny, nx});
-      visited[ny][nx] = visited[here.first][here.second] + 1;
+    queue<pair<int, int>> q;
+    q.push({y, x});
+
+    while (!q.empty()) {
+        pair<int, int> here = q.front(); q.pop();
+
+        for (int t=0; t<4; t++) {
+            int ny = here.first + dy[t];
+            int nx = here.second + dx[t];
+
+            if (ny < 0 || nx < 0 || ny >= n || nx >= m || mp[ny][nx] == 0) {
+                continue;
+            }
+
+            if (visited[ny][nx]) {
+                continue;
+            }
+
+            visited[ny][nx] = visited[here.first][here.second] + 1;
+            q.push({ny, nx});
+        }
     }
-  }
 }
 
 int main() {
-  ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-  cin >> n >> m;
-  for (int i=0; i<n; i++) {
-    cin >> input;
-    for (int j=0; j<input.size(); j++) {
-      adj[i][j] = atoi(input.substr(j, 1).c_str());
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    cin >> n >> m;
+
+    for(int i=0; i<n; i++) {
+        string s;
+        cin >> s;
+        for(int j=0; j<m; j++) {
+            mp[i][j] = s[j] - '0';
+        }
     }
-  }
 
-  bfs(0, 0);
-  cout << visited[n-1][m-1] << "\n";
+    visited[0][0] = 1;
+    bfs(0, 0);
 
-  return 0;  
+    cout << visited[n-1][m-1] << "\n";
+
+    return 0;
 }
+
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// string input;
+// int n, m;
+// int dy[4] = {-1, 0, 1, 0};
+// int dx[4] = {0, 1, 0, -1};
+// int adj[104][104];
+// int visited[104][104];
+// int ret = 0;
+
+// void bfs(int y, int x) {
+//   visited[0][0] = 1;
+//   queue<pair<int, int>> q;
+//   q.push({y, x});
+//   while(q.size()){
+//     pair<int, int> here = q.front(); q.pop();
+//     for(int i=0; i<4; i++) {
+//       int ny = here.first + dy[i];
+//       int nx = here.second + dx[i];
+
+//       if(ny < 0 || nx < 0 || n <= ny || m <= nx || adj[ny][nx] == 0) continue; 
+//       if (visited[ny][nx]) continue;
+//       q.push({ny, nx});
+//       visited[ny][nx] = visited[here.first][here.second] + 1;
+//     }
+//   }
+// }
+
+// int main() {
+//   ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+//   cin >> n >> m;
+//   for (int i=0; i<n; i++) {
+//     cin >> input;
+//     for (int j=0; j<input.size(); j++) {
+//       adj[i][j] = atoi(input.substr(j, 1).c_str());
+//     }
+//   }
+
+//   bfs(0, 0);
+//   cout << visited[n-1][m-1] << "\n";
+
+//   return 0;  
+// }
 
 // void dfs(int y, int x) {
 //   visited[y][x] = 1;
 //   ret ++;
 //   // cout << "visited: " << y << ", " << x << "\n";
 //   if (y == 3 && x == 5) cout << ret-1 << "\n";
-  
+
 //   for(int i=0; i<4; i++) {
 //     int ny = y + dy[i];
 //     int nx = x + dx[i];
@@ -80,7 +139,7 @@ int main() {
 /*
 	날짜: 2023-08-13
 	횟수: 2
-  특이사항: 1회독에서 한 것 처럼 bfs() 함수화 해서 풀어보기
+    특이사항: 1회독에서 한 것 처럼 bfs() 함수화 해서 풀어보기
 */
 // int maxV = 104;
 // int N, M, y, x;
@@ -128,48 +187,47 @@ int main() {
 /*
 	날짜: 2024-01-09
 	횟수: 3
-  특이사항: 굿
+    특이사항: 굿
 */
+// const int max_n = 100;
+// int dy[4] = {-1, 0, 1, 0};
+// int dx[4] = {0, 1, 0, -1};
+// int n, m, y, x;
+// int mp[max_n][max_n];
+// int visited[max_n][max_n];
 
-const int max_n = 100;
-int dy[4] = {-1, 0, 1, 0};
-int dx[4] = {0, 1, 0, -1};
-int n, m, y, x;
-int mp[max_n][max_n];
-int visited[max_n][max_n];
+// int main() {
+//     ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+//     cin >> n >> m;
+//     for (int i=0; i<n; i++) {
+//         string s;
+//         cin >> s;
+//         for (int j=0; j<m; j++) {
+//             mp[i][j] = int(s[j])-48;
+//         }
+//     }
 
-int main() {
-    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-    cin >> n >> m;
-    for (int i=0; i<n; i++) {
-        string s;
-        cin >> s;
-        for (int j=0; j<m; j++) {
-            mp[i][j] = int(s[j])-48;
-        }
-    }
+//     queue<pair<int, int>> q;
+//     visited[0][0] = 1;
+//     q.push({0, 0});
 
-    queue<pair<int, int>> q;
-    visited[0][0] = 1;
-    q.push({0, 0});
-
-    while(q.size()) {
-        tie(y, x) = q.front(); q.pop();
+//     while(q.size()) {
+//         tie(y, x) = q.front(); q.pop();
         
-        for (int t=0; t<4; t++) {
-            int ny = y + dy[t];
-            int nx = x + dx[t];
-            if (ny < 0 || nx < 0 || n <= ny || m <= nx) continue;
-            if (!mp[ny][nx]) continue;
-            if (visited[ny][nx]) continue;
+//         for (int t=0; t<4; t++) {
+//             int ny = y + dy[t];
+//             int nx = x + dx[t];
+//             if (ny < 0 || nx < 0 || n <= ny || m <= nx) continue;
+//             if (!mp[ny][nx]) continue;
+//             if (visited[ny][nx]) continue;
 
-            q.push({ny, nx});
-            visited[ny][nx] = visited[y][x] + 1;
-        }
+//             q.push({ny, nx});
+//             visited[ny][nx] = visited[y][x] + 1;
+//         }
         
-    }
+//     }
 
-    cout << visited[n-1][m-1] << "\n";
+//     cout << visited[n-1][m-1] << "\n";
 
-    return 0;
-}
+//     return 0;
+// }
