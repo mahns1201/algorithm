@@ -1,73 +1,137 @@
 // https://www.acmicpc.net/problem/1012
+
+/*
+    날짜: 2025-08-08
+	횟수: 3
+*/
 #include <bits/stdc++.h>
 using namespace std;
 
-int TRY;
-int M, N, K;
-int dx[4] = {0, 1, 0, -1};
-int dy[4] = {-1, 0, 1, 0};
-int adj[55][55];
-int visited[55][55];
-vector<int> ret;
-void dfs(int x, int y) {
-  // cout << "visited: " << x << ", " << y << "\n";
-  // 방문하고 visited = 1;
-  visited[x][y] = 1;
-  
-  // 
-  for (int i=0; i<4; i++) {
-    int nx = x + dx[i];
-    int ny = y + dy[i];
+const int _max = 54;
+int dy[4] = { -1, 0, 1, 0 };
+int dx[4] = { 0, 1, 0, -1 };
+int mp[_max][_max], visited[_max][_max];
+int temp, n, m, k;
 
-    // cout << nx << ", " << ny << "\n";
-    if (nx < 0 || ny < 0 || M-1 < nx || N-1 < ny || adj[nx][ny] == 0) continue;
-    if (visited[nx][ny] == 1) continue;
+void dfs(int y, int x) {
+    visited[y][x] = 1;
 
-    dfs(nx, ny);
-  }
+    for (int t=0; t<4; t++) {
+        int ny = y + dy[t];
+        int nx = x + dx[t];
+
+        if (ny < 0 || nx < 0 || ny >= n || nx >= m) {
+            continue;
+        }
+        
+        if (!mp[ny][nx] || visited[ny][nx]) {
+            continue;
+        }
+
+        dfs(ny, nx);
+    }
 }
 
 int main() {
-  ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-  cin >> TRY;
-  while (0 < TRY) {
-    TRY--;
-    
-    cin >> M >> N >> K;
-    for (int i=0; i<M; i++) {
-      for (int j=0; j<N; j++) {
-        adj[i][j] = 0;
-      }
-    }
-    for (int k=0; k<K; k++) {
-      int x, y;
-      cin >> x >> y;
-      adj[x][y] = 1;
-    }
-    
-    for (int q=0; q<55; q++) {
-      for (int w=0; w<55; w++) {
-        visited[q][w] = 0;
-      }  
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    cin >> temp;
+
+    while (temp--) {
+        cin  >> m >> n >> k;
+        int ret = 0;
+        memset(mp, 0, sizeof(mp));
+        memset(visited, 0, sizeof(visited));
+
+        for (int i=0; i<k; i++) {
+            int iy, ix;
+            cin >> ix >> iy;
+            mp[iy][ix] = 1;
+        }
+
+        for (int i=0; i<n; i++) {
+            for (int j=0; j<m; j++) {
+                if (mp[i][j] && !visited[i][j]) {
+                    dfs(i, j);
+                    ret++;
+                }
+            }
+        }
+
+        cout << ret << "\n";
     }
 
-    int v = 0;
-    for (int i=0; i<M; i++) {
-      for (int j=0; j<N; j++) {
-        if (!adj[i][j] || visited[i][j]) continue;
-        dfs(i, j);
-        v++;
-      }
-    }
-    ret.push_back(v);
-  }
-
-  for (int v: ret) {
-    cout << v << "\n";
-  }
-  
-  return 0;
+    return 0;
 }
+
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// int TRY;
+// int M, N, K;
+// int dx[4] = {0, 1, 0, -1};
+// int dy[4] = {-1, 0, 1, 0};
+// int adj[55][55];
+// int visited[55][55];
+// vector<int> ret;
+// void dfs(int x, int y) {
+//   // cout << "visited: " << x << ", " << y << "\n";
+//   // 방문하고 visited = 1;
+//   visited[x][y] = 1;
+  
+//   // 
+//   for (int i=0; i<4; i++) {
+//     int nx = x + dx[i];
+//     int ny = y + dy[i];
+
+//     // cout << nx << ", " << ny << "\n";
+//     if (nx < 0 || ny < 0 || M-1 < nx || N-1 < ny || adj[nx][ny] == 0) continue;
+//     if (visited[nx][ny] == 1) continue;
+
+//     dfs(nx, ny);
+//   }
+// }
+
+// int main() {
+//   ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+//   cin >> TRY;
+//   while (0 < TRY) {
+//     TRY--;
+    
+//     cin >> M >> N >> K;
+//     for (int i=0; i<M; i++) {
+//       for (int j=0; j<N; j++) {
+//         adj[i][j] = 0;
+//       }
+//     }
+//     for (int k=0; k<K; k++) {
+//       int x, y;
+//       cin >> x >> y;
+//       adj[x][y] = 1;
+//     }
+    
+//     for (int q=0; q<55; q++) {
+//       for (int w=0; w<55; w++) {
+//         visited[q][w] = 0;
+//       }  
+//     }
+
+//     int v = 0;
+//     for (int i=0; i<M; i++) {
+//       for (int j=0; j<N; j++) {
+//         if (!adj[i][j] || visited[i][j]) continue;
+//         dfs(i, j);
+//         v++;
+//       }
+//     }
+//     ret.push_back(v);
+//   }
+
+//   for (int v: ret) {
+//     cout << v << "\n";
+//   }
+  
+//   return 0;
+// }
 
 /*
 	날짜: 2023-08-14
