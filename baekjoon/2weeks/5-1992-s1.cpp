@@ -1,37 +1,53 @@
 // https://www.acmicpc.net/problem/1992
 
+/*
+    날짜: 2025-08-14
+	횟수: 3
+    특이사항: gpt로 리팩터링 했다. 다시 풀어보기
+*/
 #include <bits/stdc++.h>
 using namespace std;
 
-/*
-    날짜: 2025-08-13
-	횟수: 2
-    특이사항: quad 함수 조건을 잘 생각해야 한다. / 분할정복으로 풀어봐야 한다.
-*/
 const int MAX = 65;
 int n;
-string s, result;
-string mp[MAX][MAX];
+string s;
+char mp[MAX][MAX];
 
-string quad(string lt, string rt, string lb, string rb) {
-    if (lt == rt && rt == lb && lb == rb) {
-        if (lt == "0" || lt == "1") {
-            return lt;
+bool press(int y, int x, int size) {
+    char idx = mp[y][x];
+    for (int i=y; i<y+size; i++) {
+        for (int j=x; j<x+size; j++) {
+            if (idx != mp[i][j]) {
+                return false;
+            }
         }
     }
+    return true;
+}
 
-    return "(" + lt + rt + lb + rb + ")";
+string quad(int y, int x, int size) {
+    if (size == 1) {
+        return string(1, mp[y][x]);
+    }
+
+    if (press(y, x, size)) {
+        return string(1, mp[y][x]);
+    }
+
+    string ret = "(";
+    ret += quad(y, x, size/2);
+    ret += quad(y, x+size/2, size/2);
+    ret += quad(y+size/2, x, size/2);
+    ret += quad(y+size/2, x+size/2, size/2);
+    ret += ")";
+
+    return ret;
 }
 
 int main() {
     ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-    cin >> n;
     
-    if (n == 1) {
-        cin >> s;
-        cout << s << "\n";
-        return 0;
-    }
+    cin >> n;
 
     for (int i=0; i<n; i++) {
         cin >> s;
@@ -40,29 +56,71 @@ int main() {
         }
     }
 
-    // cout << quad(mp[0][0], mp[0][1], mp[1][0], mp[1][1]) << "\n";
-
-    // cout << "\n\n\n";
-
-    while (n > 1) {
-        for (int i=0; i<n; i+=2) {
-            for (int j=0; j<n; j+=2) {
-                mp[i/2][j/2] = quad(mp[i][j], mp[i][j+1], mp[i+1][j], mp[i+1][j+1]);
-                // cout << i << " " << j << ": ";
-                // cout << quad(mp[i][j], mp[i][1], mp[1][j], mp[1][1]) << "\n";
-            }
-            // cout << "\n";
-        }
-
-        // cout << "\n\n\n";
-
-        n /= 2;
-    }
-    
-    cout << mp[0][0] << "\n";
+    cout << quad(0, 0, n) << "\n";
 
     return 0;
 }
+
+/*
+    날짜: 2025-08-13
+	횟수: 2
+    특이사항: quad 함수 조건을 잘 생각해야 한다. / 분할정복으로 풀어봐야 한다.
+*/
+// const int MAX = 65;
+// int n;
+// string s, result;
+// string mp[MAX][MAX];
+
+// string quad(string lt, string rt, string lb, string rb) {
+//     if (lt == rt && rt == lb && lb == rb) {
+//         if (lt == "0" || lt == "1") {
+//             return lt;
+//         }
+//     }
+
+//     return "(" + lt + rt + lb + rb + ")";
+// }
+
+// int main() {
+//     ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+//     cin >> n;
+    
+//     if (n == 1) {
+//         cin >> s;
+//         cout << s << "\n";
+//         return 0;
+//     }
+
+//     for (int i=0; i<n; i++) {
+//         cin >> s;
+//         for (int j=0; j<s.size(); j++) {
+//             mp[i][j] = s[j];
+//         }
+//     }
+
+//     // cout << quad(mp[0][0], mp[0][1], mp[1][0], mp[1][1]) << "\n";
+
+//     // cout << "\n\n\n";
+
+//     while (n > 1) {
+//         for (int i=0; i<n; i+=2) {
+//             for (int j=0; j<n; j+=2) {
+//                 mp[i/2][j/2] = quad(mp[i][j], mp[i][j+1], mp[i+1][j], mp[i+1][j+1]);
+//                 // cout << i << " " << j << ": ";
+//                 // cout << quad(mp[i][j], mp[i][1], mp[1][j], mp[1][1]) << "\n";
+//             }
+//             // cout << "\n";
+//         }
+
+//         // cout << "\n\n\n";
+
+//         n /= 2;
+//     }
+    
+//     cout << mp[0][0] << "\n";
+
+//     return 0;
+// }
 
 // int N;
 // string I;
