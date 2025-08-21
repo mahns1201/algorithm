@@ -14,3 +14,7 @@ int char_to_int = '3' - '0';
     - "123" -> 123
 */
 int string_to_int = atoi("1231");
+
+// int to string
+int int_to_string = 1234;
+string s = to_string(x);
